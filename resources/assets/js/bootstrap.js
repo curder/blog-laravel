@@ -1,4 +1,3 @@
-
 window._ = require('lodash');
 
 /**
@@ -11,7 +10,8 @@ try {
     window.$ = window.jQuery = require('jquery');
 
     require('bootstrap-sass');
-} catch (e) {}
+} catch (e) {
+}
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -51,3 +51,9 @@ if (token) {
 //     broadcaster: 'pusher',
 //     key: 'your-pusher-key'
 // });
+
+$(function () {
+    $('div.alert-flash').not('.alert-important').delay(3000).fadeOut(350);
+    $('#flash-overlay-modal').modal();
+    $('[data-toggle="tooltip"]').tooltip();
+});
