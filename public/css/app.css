@@ -8350,14 +8350,173 @@ button.close {
   }
 }
 
+/** Theme from here. https://highlightjs.org/static/demo/ */
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: #002b36;
+  color: #839496;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #586e75;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-addition {
+  color: #859900;
+}
+
+.hljs-number,
+.hljs-string,
+.hljs-meta .hljs-meta-string,
+.hljs-literal,
+.hljs-doctag,
+.hljs-regexp {
+  color: #2aa198;
+}
+
+.hljs-title,
+.hljs-section,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class {
+  color: #268bd2;
+}
+
+.hljs-attribute,
+.hljs-attr,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-class .hljs-title,
+.hljs-type {
+  color: #b58900;
+}
+
+.hljs-symbol,
+.hljs-bullet,
+.hljs-subst,
+.hljs-meta,
+.hljs-meta .hljs-keyword,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-link {
+  color: #cb4b16;
+}
+
+.hljs-built_in,
+.hljs-deletion {
+  color: #dc322f;
+}
+
+.hljs-formula {
+  background: #073642;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+/*文章列表*/
+
 .list-group-item > .label {
   margin-right: 1em;
 }
+
+/*flash提示层*/
 
 .alert-flash {
   font-size: .5rem;
   position: fixed;
   right: 0.5rem;
   bottom: 2.5rem;
+}
+
+/*文章详情*/
+
+.article {
+  font-size: 16px;
+  font-family: "Maven Pro,Microsoft YaHei,sans-serif!important";
+  line-height: 26px;
+}
+
+code,
+kbd,
+pre,
+samp {
+  font-size: 14px;
+}
+
+.article > section h1 {
+  font-size: 2em;
+}
+
+.article > section h2 {
+  font-size: 1.8em;
+}
+
+.article > section h3 {
+  font-size: 1.6em;
+}
+
+.article > section h4 {
+  font-size: 1.4em;
+}
+
+.article > section h5 {
+  font-size: 1.2em;
+}
+
+.article > section h1,
+.article > section h2,
+.article > section h3,
+.article > section h4,
+.article > section h5 {
+  margin: 20px -15px 10px;
+  padding: 9px 20px;
+  border-bottom: 1px dashed #E1E1E1;
+}
+
+.article > section p {
+  margin-bottom: 6px;
+}
+
+.article > section ul {
+  padding-left: 20px;
+}
+
+.article > section img {
+  border: 1px solid #ddd;
+  box-shadow: 0 0 30px #ccc;
+  -moz-box-shadow: 0 0 30px #ccc;
+  -webkit-box-shadow: 0 0 30px #ccc;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  max-width: 100%;
+  height: auto;
+}
+
+.article > header .abstract,
+.article > header dl {
+  padding: 10px 15px;
+  font-size: 12px;
+  color: #686868;
+  background-color: #f1f1f1;
+}
+
+.dl-inline dt {
+  display: inline-block;
+}
+
+.dl-inline dd {
+  display: inline-block;
 }
 

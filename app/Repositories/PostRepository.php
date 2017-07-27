@@ -10,6 +10,9 @@ use Prettus\Repository\Contracts\RepositoryInterface;
  * @method pushCriteria($app)
  * @method withTrashed()
  * @method onlyTrashed()
+ * @method store($attributes)
+ * @method prev($post)
+ * @method next($post)
  */
 interface PostRepository extends RepositoryInterface
 {

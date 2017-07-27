@@ -30,9 +30,13 @@ return [
     ],
 
     'stripe' => [
-        'model' => App\User::class,
+        'model' => App\Entities\User::class,
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
+    ],
+    'youdao' => [
+        'appKey' => env('YOUDAO_APP_KEY'),
+        'appSecret' => env('YOUDAO_APP_SECRET'),
     ],
 
 ];

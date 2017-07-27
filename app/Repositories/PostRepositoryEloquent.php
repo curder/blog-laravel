@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Entities\User;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\PostRepository;
@@ -25,10 +26,10 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
     }
 
     /**
-    * Specify Validator class name
-    *
-    * @return mixed
-    */
+     * Specify Validator class name
+     *
+     * @return mixed
+     */
     public function validator()
     {
 
@@ -65,5 +66,61 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
     {
         $this->model = $this->model->onlyTrashed();
         return $this;
+    }
+
+    /**
+     * 获取当前文章分类下的上一篇文章
+     *
+     * @param $post
+     * @return mixed
+     */
+    public function prev($post)
+    {
+        return $this->model->where('id', '<', $post->id)
+            ->where('channel_id', '=', $post->channel_id)
+            ->max('id');
+    }
+
+    /**
+     * 获取当前文章分类下的下一篇文章
+     *
+     * @param $post
+     * @return mixed
+     */
+    public function next($post)
+    {
+        return $this->model->where('id', '>', $post->id)
+            ->where('channel_id', '=', $post->channel_id)
+            ->min('id');
+    }
+
+    /**
+     *
+     * @param User $user
+     * @return Post
+     */
+    public function form(User $user)
+    {
+        $post = new Post;
+
+        $post->user_id = $user->id;
+
+        if ($user->isAdmin()) {
+            $post->approve();
+        }
+
+        return $post;
+    }
+
+    /**
+     * @param $attributes
+     * @return bool
+     * @throws \Illuminate\Database\Eloquent\MassAssignmentException
+     */
+    public function store($attributes)
+    {
+        return $this->form(
+            auth()->user()
+        )->contribute($attributes);
     }
 }

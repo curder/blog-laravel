@@ -23,7 +23,7 @@ class ChannelPresenter extends FractalPresenter
     }
 
     /**
-     *      * 判断按钮是删除或恢复
+     * 判断按钮是删除或恢复
      *
      * @param $channel
      * @return string

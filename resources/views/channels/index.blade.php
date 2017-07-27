@@ -2,7 +2,6 @@
 
 @section('content')
     <div class="col-md-8">
-
         @include('channels.list')
     </div>
     <div class="col-md-4">

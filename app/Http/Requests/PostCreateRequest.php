@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use App\Entities\Post;
+use App\Repositories\PostRepository;
 use Illuminate\Foundation\Http\FormRequest;
 
 class PostCreateRequest extends FormRequest
@@ -13,7 +15,7 @@ class PostCreateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +26,11 @@ class PostCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'channel_id' => 'required|exists:channels,id',
+            'name' => 'required|max:60',
+            'keywords' => 'required',
+            'description' => 'required',
+            'body' => 'required',
         ];
     }
 }

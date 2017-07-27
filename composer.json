@@ -6,13 +6,15 @@
     "type": "project",
     "require": {
         "php": ">=5.6.4",
+        "jellybool/translug": "^2.0",
+        "laracasts/flash": "^3.0",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.4",
         "league/fractal": "^0.16.0",
         "prettus/l5-repository": "^2.6",
         "prettus/laravel-validation": "^1.1",
-        "laracasts/flash": "^3.0"
+        "yuanchao/laravel-5-markdown-editor": "dev-master"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^2.4",

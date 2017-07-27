@@ -13,7 +13,7 @@ class PostUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,11 @@ class PostUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'channel_id' => 'required|exists:channels,id',
+            'name' => 'required|max:60',
+            'keywords' => 'required',
+            'description' => 'required',
+            'body' => 'required',
         ];
     }
 }
