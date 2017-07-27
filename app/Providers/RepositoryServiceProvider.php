@@ -29,6 +29,7 @@ class RepositoryServiceProvider extends ServiceProvider
     {
         $this->app->bind(ChannelRepository::class, ChannelRepositoryEloquent::class);
         $this->app->bind(PostRepository::class, PostRepositoryEloquent::class);
+        $this->app->bind(\App\Repositories\LinkRepository::class, \App\Repositories\LinkRepositoryEloquent::class);
         //:end-bindings:
     }
 }

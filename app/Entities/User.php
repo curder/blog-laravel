@@ -16,6 +16,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property \Carbon\Carbon|null $created_at
  * @property \Carbon\Carbon|null $updated_at
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+ * @property mixed trusted
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereEmail($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereId($value)
@@ -35,7 +36,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','is_admin'
+        'name', 'email', 'password', 'is_admin'
     ];
 
     /**
@@ -53,5 +54,31 @@ class User extends Authenticatable
     public function isAdmin()
     {
         return $this->is_admin;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isTrusted()
+    {
+        return $this->isAdmin() || (bool)$this->trusted;
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function votes()
+    {
+        return $this->belongsToMany(Link::class, 'links_votes')
+            ->withTimestamps();
+    }
+
+    /**
+     * @param Link $link
+     * @return mixed
+     */
+    public function votedFor(Link $link)
+    {
+        return $link->votes->contains('user_id', $this->id);
     }
 }

@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique()->comment('邮箱地址');
             $table->string('password')->comment('密码');
             $table->unsignedTinyInteger('is_admin')->default(0)->comment('是否超级管理');
+            $table->boolean('trusted')->default(0)->comment('审核');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -13,6 +13,9 @@ class Channel extends Model implements Transformable
 
     protected $fillable = ['name', 'slug', 'color'];
 
+    /**
+     * @return string
+     */
     public function getRouteKeyName()
     {
         return 'slug';

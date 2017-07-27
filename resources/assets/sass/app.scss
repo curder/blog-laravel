@@ -7,9 +7,17 @@
 
 @import "./solarized-dark";
 
-/*文章列表*/
-.list-group-item > .label {
-  margin-right: 1em;
+.list-group-item {
+  /*链接列表*/
+  form {
+    display: inline-block;
+    margin-right: 1em;
+    margin-bottom: 10px;
+  }
+  /*文章列表*/
+  .label {
+    margin-right: 1em;
+  }
 }
 
 /*flash提示层*/
@@ -26,9 +34,11 @@
   font-family: "Maven Pro,Microsoft YaHei,sans-serif!important";
   line-height: 26px;
 }
+
 code, kbd, pre, samp {
-  font-size:14px;
+  font-size: 14px;
 }
+
 .article > section {
   h1 {
     font-size: 2em;
@@ -91,4 +101,6 @@ code, kbd, pre, samp {
     //padding-right: 1em;
   }
 }
+
+
 

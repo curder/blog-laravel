@@ -21,4 +21,7 @@ Route::get('home', 'HomeController@index')->name('home');
 
 Route::resource('posts', 'PostsController');
 Route::resource('channels', 'ChannelsController');
+Route::get('links/{channel}', 'LinksController@index')->name('links.channel');
+Route::resource('links', 'LinksController');
+Route::post('votes/{link}','VotesController@store')->name('votes.store'); // 点赞、取消点赞
 Route::post('upload', 'UploadsController@store')->name('uploads.store');

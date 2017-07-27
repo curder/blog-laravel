@@ -8425,9 +8425,18 @@ button.close {
   font-weight: bold;
 }
 
-/*文章列表*/
+.list-group-item {
+  /*链接列表*/
+  /*文章列表*/
+}
 
-.list-group-item > .label {
+.list-group-item form {
+  display: inline-block;
+  margin-right: 1em;
+  margin-bottom: 10px;
+}
+
+.list-group-item .label {
   margin-right: 1em;
 }
 
