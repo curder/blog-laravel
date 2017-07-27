@@ -418,16 +418,16 @@
         },
         {
             "name": "jellybool/translug",
-            "version": "2.0.1",
+            "version": "2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JellyBool/translug.git",
-                "reference": "351bf143e2c60fdc8acbb0c4fe6ddc1811d6d746"
+                "reference": "73272dac6439e123679376cb6d5bb2c314bdfe90"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/JellyBool/translug/351bf143e2c60fdc8acbb0c4fe6ddc1811d6d746.zip",
-                "reference": "351bf143e2c60fdc8acbb0c4fe6ddc1811d6d746",
+                "url": "https://files.phpcomposer.com/files/JellyBool/translug/73272dac6439e123679376cb6d5bb2c314bdfe90.zip",
+                "reference": "73272dac6439e123679376cb6d5bb2c314bdfe90",
                 "shasum": ""
             },
             "require": {
@@ -439,6 +439,16 @@
                 "phpunit/phpunit": "^4.0"
             },
             "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "\\JellyBool\\Translug\\TranslugServiceProvider"
+                    ],
+                    "aliases": [
+                        "\\JellyBool\\Translug\\TranslugFacade"
+                    ]
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "JellyBool\\Translug\\": "src/"
@@ -462,7 +472,7 @@
                 "slug",
                 "translate"
             ],
-            "time": "2017-05-26T15:45:17+00:00"
+            "time": "2017-07-26T05:44:51+00:00"
         },
         {
             "name": "laracasts/flash",

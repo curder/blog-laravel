@@ -19,7 +19,13 @@ class Post extends Model implements Transformable
         'channel_id', 'name', 'slug', 'status', 'views', 'body', 'approved', 'keywords', 'description'
     ];
 
-
+    /**
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 
     /**
      * A post has a creator.
@@ -67,6 +73,7 @@ class Post extends Model implements Transformable
          * throw new PostAlreadySubmitted;
          * }
          */
+        $attributes['slug'] = translug($attributes['title']); // 修改文章的slug
         return $this->fill($attributes)->save();
     }
 }

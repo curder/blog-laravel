@@ -175,6 +175,7 @@ return [
         App\Providers\RepositoryServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
         YuanChao\Editor\EndaEditorServiceProvider::class,
+        JellyBool\Translug\TranslugServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -238,6 +239,7 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'EndaEditor' => YuanChao\Editor\Facade\EndaEditorFacade::class,
+        'Translug' => \JellyBool\Translug\TranslugFacade::class,
     ],
 
 ];
