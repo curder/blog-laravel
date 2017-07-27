@@ -6,7 +6,7 @@ return [
     'update' => '保存',
     'delete' => '删除',
     'restore' => '恢复',
-
+    'logout' => '退出登录',
     'success' => [
         'store' => '新增成功',
         'update' => '编辑成功',
@@ -14,7 +14,7 @@ return [
         'restore' => '恢复成功',
     ],
 
-    'empty' => '抱歉，暂时没有数据，请添加后再查看！',
+    'empty' => '抱歉，暂时没有数据，请添加后查看',
 ];
 
 

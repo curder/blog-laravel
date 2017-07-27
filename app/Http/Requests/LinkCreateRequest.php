@@ -31,8 +31,14 @@ class LinkCreateRequest extends FormRequest
         ];
     }
 
+    /**
+     * @return array
+     */
     public function messages()
     {
+        if (config('app.locale') !== 'zh_cn') {
+            return [];
+        }
         return [
             'channel_id.required' => '必须选择',
             'channel_id.exists' => '所选的分类不存在',

@@ -11,7 +11,7 @@ class Channel extends Model implements Transformable
 {
     use TransformableTrait, SoftDeletes;
 
-    protected $fillable = ['name', 'slug', 'color'];
+    protected $fillable = ['name', 'slug', 'color', 'keywords', 'description'];
 
     /**
      * @return string

@@ -6,6 +6,7 @@ return [
     'update' => 'save',
     'delete' => 'delete',
     'restore' => 'restore',
+    'logout' => 'Logout',
     'success' => [
         'store' => 'stored success.',
         'update' => 'updated success.',
@@ -13,6 +14,6 @@ return [
         'restore' => 'restored success.',
     ],
 
-    'empty' => 'No Channels yet, Please add.',
+    'empty' => 'No Data yet, Please add.',
 ];
 

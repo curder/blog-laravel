@@ -19,9 +19,12 @@ Auth::routes();
 
 Route::get('home', 'HomeController@index')->name('home');
 
+Route::get('posts/{channel}/list', 'PostsController@index')->name('posts.channel'); // 分类下的文章
 Route::resource('posts', 'PostsController');
 Route::resource('channels', 'ChannelsController');
-Route::get('links/{channel}', 'LinksController@index')->name('links.channel');
+Route::get('links/{channel}/list', 'LinksController@index')->name('links.channel'); // 分类下的链接
 Route::resource('links', 'LinksController');
-Route::post('votes/{link}','VotesController@store')->name('votes.store'); // 点赞、取消点赞
+Route::get('channels/{posts}', 'ChannelsController@posts')->name('channels.posts');
+
+Route::post('votes/{link}', 'VotesController@store')->name('votes.store'); // 点赞、取消点赞
 Route::post('upload', 'UploadsController@store')->name('uploads.store');

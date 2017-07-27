@@ -3,7 +3,7 @@
         @inject('postPresenter','App\Presenters\PostPresenter')
         @foreach($posts as $post)
             <li class="channle list-group-item">
-                <a href="{{ route('channels.index', $post) }}" class="label label-default"
+                <a href="{{ route('posts.channel', $post->channel) }}" class="label label-default"
                    style="background-color: {{ $post->channel->color }}">
                     {{ $post->channel->name }}
                 </a>
@@ -24,6 +24,7 @@
             </li>
         @endforeach
     @else
-        <li class="list-group-item">{{ trans('global.empty') }}</li>
+        <li class="list-group-item">{{ trans('global.empty') }} <a href="{{ route('posts.create') }}">Click me
+                to {{ trans('global.create') }}</a></li>
     @endif
 </ul>

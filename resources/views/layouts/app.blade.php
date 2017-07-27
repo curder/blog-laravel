@@ -55,12 +55,18 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ route('posts.create') }}">发布文章</a></li>
+                                <li>
+                                    <a href="{{ route('posts.index') }}">{{ trans('post.all.title') }}</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('channels.index') }}">{{ trans('channel.all.title') }}</a>
+                                </li>
+                                <li><a href="{{ route('links.index') }}">{{  trans('link.all.title') }}</a></li>
                                 <li>
                                     <a href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        Logout
+                                        {{ trans('global.logout') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST"

@@ -3,11 +3,11 @@
         @inject('channelPresenter','App\Presenters\ChannelPresenter')
         @foreach($channels as $channel)
             <li class="channle list-group-item">
-                <a href="{{ route('channels.index',$channel ) }}" class="label label-default"
+                <a href="{{ route('posts.channel', $channel ) }}" class="label label-default"
                    style="background-color: {{ $channel->color }}">
                     {{ $channel->name }}
                 </a>
-                <a href="#" target="_blank">{{ $channel->name }}</a>
+                <a href="#" target="_blank">{{ $channel->name }}</a>&nbsp;<span class="small">({{ $channel->slug }})</span>
                 <span class="pull-right">
                     <a class="btn btn-primary btn-xs"
                        href="{{ route('channels.edit', $channel) }}">{{ trans('global.edit') }}</a>&nbsp;

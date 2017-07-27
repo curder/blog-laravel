@@ -44,7 +44,7 @@ class PostsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Channel $channel = null)
     {
         $this->repository->pushCriteria(app(RequestCriteria::class));
         $posts = $this->repository->withTrashed()->all();
@@ -56,7 +56,7 @@ class PostsController extends Controller
             ]);
         }
 
-        return view('posts.index', compact('posts'));
+        return view('posts.index', compact('posts', 'channel'));
     }
 
     public function create()

@@ -1,9 +1,20 @@
 @extends('layouts.app')
-@section('content')
-    <div class="col-md-8">
-        @include('posts.list')
+@section('header')
+    <div class="jumbotron">
+        <div class="container">
+            <h3>
+                <a href="{{ route('posts.index') }}">{{ trans('post.all.title') }}</a>
+
+                @if($channel->exists)
+                    <span>&mdash; {{ $channel->name }}</span>
+                @endif
+            </h3>
+            <span>{{ trans('post.all.description') }}</span>
+        </div>
     </div>
-    <div class="col-md-4">
-{{--        @include('posts.add-post')--}}
+@endsection
+@section('content')
+    <div class="col-md-12">
+        @include('posts.list')
     </div>
 @endsection
