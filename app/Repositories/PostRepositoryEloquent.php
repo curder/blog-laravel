@@ -95,6 +95,21 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
     }
 
     /**
+     * @param $channel
+     * @return mixed
+     */
+    public function get( $channel)
+    {
+
+        return $this->model->with(['creator', 'channel'])
+            ->forChannel($channel)
+            ->where('approved', 1)
+            ->groupBy('posts.id')
+            ->orderBy('updated_at', 'desc')
+            ->paginate(25);
+    }
+
+    /**
      * @param $post
      * @return mixed
      * @throws \Prettus\Validator\Exceptions\ValidatorException

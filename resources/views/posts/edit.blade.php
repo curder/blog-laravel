@@ -1,8 +1,8 @@
 @extends('layouts.app')
-
+@section('title', trans('post.edit'))
 @section('content')
     <div class="col-md-10 col-sm-offset-1">
-
+        {!! Breadcrumbs::render('posts.edit',$post) !!}
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h5>{{ trans('global.create') }}</h5>

@@ -19,21 +19,15 @@ Auth::routes();
 
 Route::get('home', 'HomeController@index')->name('home');
 
-Route::get('posts/{channel}/lists', 'PostsController@index')->name('posts.channel'); // 分类下的文章
-Route::resource('posts', 'PostsController', [
-    'only' => ['index', 'show'],
-]);
-Route::get('links', 'LinksController@index')->name('links.index'); // 链接列表
-Route::get('links/{channel}/lists', 'LinksController@index')->name('links.channel'); // 分类下的链接列表
+
 
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('posts', 'PostsController', [
-        'only' => ['update', 'edit', 'store', 'destroy'],
+        'only' => ['update', 'edit', 'store', 'destroy', 'create'],
     ]);
     Route::resource('channels', 'ChannelsController', [
         'only' => ['store', 'update', 'index', 'edit', 'destroy', 'create']
     ]);
-//    Route::get('channels/{posts}/lists', 'ChannelsController@posts')->name('channels.posts');
     Route::resource('links', 'LinksController', [
         'only' => ['create', 'store', 'edit', 'update', 'destroy'],
     ]);
@@ -41,3 +35,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('upload', 'UploadsController@store')->name('uploads.store'); // 上传数据
 });
 
+
+Route::get('posts/{channel?}/lists', 'PostsController@index')->name('posts.channel'); // 分类下的文章
+Route::get('posts', 'PostsController@index')->name('posts.index');
+Route::get('posts/{post}', 'PostsController@show')->name('posts.show');
+
+Route::get('links', 'LinksController@index')->name('links.index'); // 链接列表
+Route::get('links/{channel}/lists', 'LinksController@index')->name('links.channel'); // 分类下的链接列表

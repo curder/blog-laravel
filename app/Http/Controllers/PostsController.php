@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Entities\Channel;
-use App\Repositories\ChannelRepository;
-use Prettus\Validator\Contracts\ValidatorInterface;
-use Prettus\Validator\Exceptions\ValidatorException;
 use App\Http\Requests\PostCreateRequest;
 use App\Http\Requests\PostUpdateRequest;
+use App\Repositories\ChannelRepository;
 use App\Repositories\PostRepository;
 use App\Validators\PostValidator;
 use Prettus\Repository\Criteria\RequestCriteria;
+use Prettus\Validator\Contracts\ValidatorInterface;
+use Prettus\Validator\Exceptions\ValidatorException;
 
 class PostsController extends Controller
 {
@@ -42,19 +42,16 @@ class PostsController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param Channel $channel
      * @return \Illuminate\Http\Response
      */
     public function index(Channel $channel = null)
     {
         $this->repository->pushCriteria(app(RequestCriteria::class));
-        $posts = $this->repository->withTrashed()->all();
 
-        if (request()->wantsJson()) {
+        $posts = $this->repository->get($channel);
 
-            return response()->json([
-                'data' => $posts,
-            ]);
-        }
+//        $channels = $this->channelRepository->orderBy('name', 'asc')->all();
 
         return view('posts.index', compact('posts', 'channel'));
     }
@@ -124,7 +121,8 @@ class PostsController extends Controller
     public function show($slug)
     {
         $post = $this->repository->withTrashed()->findWhere(['slug' => $slug])->first();
-        $this->repository->incr($post);
+//        $this->repository->incr($post);
+        $post->increment('views', 1);
 
         if (request()->wantsJson()) {
 

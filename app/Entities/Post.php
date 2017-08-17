@@ -78,7 +78,21 @@ class Post extends Model implements Transformable
          * throw new PostAlreadySubmitted;
          * }
          */
-        $attributes['slug'] = translug($attributes['title']); // 修改文章的slug
+        $attributes['slug'] = translug($attributes['name']); // 修改文章的slug
         return $this->fill($attributes)->save();
+    }
+
+    /**
+     * 获取分类下的数据
+     * @param Builder $builder
+     * @param Channel $channel
+     * @return mixed
+     */
+    public function scopeForChannel($builder, $channel)
+    {
+        if ($channel->id) {
+            return $builder->where('channel_id', $channel->id);
+        }
+        return $builder;
     }
 }

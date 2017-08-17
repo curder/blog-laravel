@@ -1,4 +1,9 @@
 @extends('layouts.app')
+@if($channel->exists)
+    @section('title', $channel->name .' - ' .trans('link.all.title'))
+@else
+    @section('title', trans('link.all.title'))
+@endif
 @section('header')
     <div class="jumbotron">
         <div class="container">
@@ -22,9 +27,18 @@
     </div>
     <hr>
     <div class="col-md-8">
-        @include('links.list')
+        @include('links._list')
     </div>
     <div class="col-md-4">
-        @include('links.add-link')
+        {{--<h3>Contribute a link</h3>--}}
+        <div class="panel panel-default">
+            <div class="panel-body">
+                @if(Route::currentRouteName() === 'links.index')
+                    @include('links._create')
+                @else
+                    @include('links._edit')
+                @endif
+            </div>
+        </div>
     </div>
 @endsection

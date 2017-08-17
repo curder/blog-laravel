@@ -176,6 +176,7 @@ return [
         Laracasts\Flash\FlashServiceProvider::class,
         YuanChao\Editor\EndaEditorServiceProvider::class,
         JellyBool\Translug\TranslugServiceProvider::class,
+        DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -240,6 +241,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'EndaEditor' => YuanChao\Editor\Facade\EndaEditorFacade::class,
         'Translug' => \JellyBool\Translug\TranslugFacade::class,
+        'Breadcrumbs' => DaveJamesMiller\Breadcrumbs\Facade::class,
     ],
 
 ];

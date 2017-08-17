@@ -24,4 +24,6 @@ return [
             'placeholder' => '请输入数据内容'
         ]
     ],
+    'create' => '发表文章',
+    'edit' => '编辑文章',
 ];

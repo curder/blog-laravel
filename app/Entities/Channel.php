@@ -20,4 +20,9 @@ class Channel extends Model implements Transformable
     {
         return 'slug';
     }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
 }

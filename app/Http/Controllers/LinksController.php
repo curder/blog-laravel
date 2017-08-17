@@ -4,17 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Entities\Channel;
 use App\Exceptions\CommunityLinkAlreadySubmitted;
-use App\Repositories\ChannelRepository;
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
-use Prettus\Validator\Contracts\ValidatorInterface;
-use Prettus\Validator\Exceptions\ValidatorException;
 use App\Http\Requests\LinkCreateRequest;
 use App\Http\Requests\LinkUpdateRequest;
+use App\Repositories\ChannelRepository;
 use App\Repositories\LinkRepository;
 use App\Validators\LinkValidator;
 use Prettus\Repository\Criteria\RequestCriteria;
+use Prettus\Validator\Contracts\ValidatorInterface;
+use Prettus\Validator\Exceptions\ValidatorException;
 
 
 class LinksController extends Controller
@@ -54,14 +51,7 @@ class LinksController extends Controller
 
         $links = $this->repository->get(request()->exists('popular'), $channel);
 
-        $channels = $this->channelRepository->orderBy('name', 'asc')->all();
-
-        if (request()->wantsJson()) {
-
-            return response()->json([
-                'data' => $links,
-            ]);
-        }
+        $channels = $this->channelRepository->orderBy('name', 'asc')->pluck('name', 'id');
 
         return view('links.index', compact('links', 'channels', 'channel'));
     }
@@ -140,9 +130,14 @@ class LinksController extends Controller
     public function edit($id)
     {
 
+        $this->repository->pushCriteria(app(RequestCriteria::class));
         $link = $this->repository->find($id);
+        $channel = $link->channel;
+        $links = $this->repository->get(request()->exists('popular'), $channel);
+        $channels = $this->channelRepository->orderBy('name', 'asc')->pluck('name', 'id');
 
-        return view('links.edit', compact('link'));
+
+        return view('links.index', compact('channel', 'link', 'links', 'channels'));
     }
 
 
