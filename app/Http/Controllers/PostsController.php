@@ -117,13 +117,14 @@ class PostsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int $id
+     * @param  string $slug
      *
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        $post = $this->repository->withTrashed()->find($id);
+        $post = $this->repository->withTrashed()->findWhere(['slug' => $slug])->first();
+        $this->repository->incr($post);
 
         if (request()->wantsJson()) {
 
@@ -143,14 +144,13 @@ class PostsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param  string $slug
      *
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
-
-        $post = $this->repository->find($id);
+        $post = $this->repository->findWhere(['slug' => $slug])->first();
         $channels = $this->channelRepository->pluck('name', 'id');
         return view('posts.edit', compact('post', 'channels'));
     }
@@ -160,18 +160,17 @@ class PostsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  PostUpdateRequest $request
-     * @param  string $id
      *
      * @return Response
      */
-    public function update(PostUpdateRequest $request, $id)
+    public function update(PostUpdateRequest $request)
     {
 
         try {
 
             $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_UPDATE);
 
-            $post = $this->repository->update($request->all(), $id);
+            $post = $this->repository->update($request->all(), request()->get('id'));
 
             $response = [
                 'message' => 'Post updated.',

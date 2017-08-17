@@ -47,6 +47,11 @@ class Post extends Model implements Transformable
         return $this->belongsTo(Channel::class, 'channel_id', 'id');
     }
 
+    public function incr()
+    {
+        $this->view += 1;
+        return $this->save();
+    }
 
     /**
      * 审核用户提交的数据

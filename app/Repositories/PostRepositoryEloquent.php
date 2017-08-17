@@ -95,6 +95,16 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
     }
 
     /**
+     * @param $post
+     * @return mixed
+     * @throws \Prettus\Validator\Exceptions\ValidatorException
+     */
+    public function incr($post)
+    {
+        return $this->model->increment('views', 1, ['id' => $post->id]);
+    }
+
+    /**
      *
      * @param User $user
      * @return Post

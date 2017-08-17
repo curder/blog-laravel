@@ -11,6 +11,7 @@
                 {!! Form::model($post, ['route' => ['posts.update', $post], 'method' => 'patch']) !!}
                 @include('posts._form')
                 <div class="form-group">
+                    {!! Form::hidden('id',$post->id) !!}
                     <button class="btn btn-primary">{{ trans('global.update') }}</button>
                 </div>
                 {!! Form::close() !!}

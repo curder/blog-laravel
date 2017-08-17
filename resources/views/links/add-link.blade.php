@@ -36,5 +36,5 @@
         </div>
     </div>
 @else
-    Please sign in!
+    Please <a href="{{ route('login') }}">sign in</a>!
 @endif

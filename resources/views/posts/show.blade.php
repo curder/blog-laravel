@@ -55,10 +55,10 @@
 @section('script')
 <script>
     // 代码高亮
-//    $(document).ready(function() {
-//        $('pre code').each(function(i, block) {
-//            hljs.highlightBlock(block);
-//        });
-//    });
+    $(document).ready(function() {
+        $('pre code').each(function(i, block) {
+            hljs.highlightBlock(block);
+        });
+    });
 </script>
 @endsection

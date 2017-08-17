@@ -9,6 +9,8 @@ window._ = require('lodash');
 try {
     window.$ = window.jQuery = require('jquery');
     require('bootstrap-sass');
+
+    window.hljs = require('highlight.js'); //代码高亮
 } catch (e) {
 }
 

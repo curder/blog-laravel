@@ -13,6 +13,7 @@ use Prettus\Repository\Contracts\RepositoryInterface;
  * @method store($attributes)
  * @method prev($post)
  * @method next($post)
+ * @method incr($post)
  */
 interface PostRepository extends RepositoryInterface
 {
