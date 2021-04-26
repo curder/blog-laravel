@@ -1,6 +1,6 @@
 ## 下载和安装
 ```
-git clone git@github.com:curder/blog.git
+git clone git@github.com:curder/blog-laravel.git
 composer install
 cp .env.example .env
 php artisan key:generate
